@@ -57,6 +57,8 @@ export default async function Home() {
             <SocialMediaCard />
             <ScheduleInput />
             <SocialMediaInput />
+            <br />
+            <a href="/schedule">Add New Schedule</a>
         </main></>
     );
 }
