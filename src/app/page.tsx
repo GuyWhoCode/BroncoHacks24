@@ -11,7 +11,7 @@ interface user {
 
 export default async function Home() {
     const session = await getServerSession(authOptions);
-    const { name, email, image } = session?.user || {};
+    const { name = "", email = "", image = "" } = session?.user || {};
 
     const IMAGE_SIZE = 200;
 
