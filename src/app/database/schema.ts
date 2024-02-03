@@ -8,6 +8,8 @@ export type user = {
 interface Class {
     className : string,
     classID : string,
+    professorName:string,
+    roomNumber: string
     startTime : Time,
     endTime: Time,
     professor: string,
