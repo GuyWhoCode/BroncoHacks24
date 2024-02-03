@@ -1,20 +1,25 @@
 export type user = {
-    "name":string
-    "email" : string,
-    "image":string,
+    "name": string,
+    "email": string,
+    "image": string,
     "classes"?: Class[],
-    "unavailableTimes"?:string[]
+    "unavailableTimes"?: string[],
+    "instagram"?: string,
+    "discord"?: string,
+    "linkedin"?: string,
+    "phone"?: string,
 }
+
 export interface Class {
-    classID : string,
-    professorName:string,
+    classID: string,
+    professorName: string,
     roomNumber: string
-    startTime : Time,
+    startTime: Time,
     endTime: Time,
     professor: string,
-
 }
+
 export interface Time{
-    hour:number
-    minute:number
+    hour: number,
+    minute: number,
 }
