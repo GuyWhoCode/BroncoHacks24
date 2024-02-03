@@ -1,12 +1,11 @@
 export type user = {
-    "name":string,
+    "name":string
     "email" : string,
     "image":string,
-    "classes": Class[],
-    "unavailableTimes":string[]
+    "classes"?: Class[],
+    "unavailableTimes"?:string[]
 }
-interface Class {
-    className : string,
+export interface Class {
     classID : string,
     professorName:string,
     roomNumber: string
@@ -15,7 +14,7 @@ interface Class {
     professor: string,
 
 }
-interface Time{
+export interface Time{
     hour:number
     minute:number
 }
