@@ -45,7 +45,7 @@ export default async function Home() {
     
 
     return (
-        <main>
+        <><ResponsiveAppBar></ResponsiveAppBar><main>
             {session && (
                 <>
                     <p>
@@ -56,8 +56,7 @@ export default async function Home() {
                         src={image || ""}
                         width={IMAGE_SIZE}
                         height={IMAGE_SIZE}
-                        alt={name || "User Image"}
-                    />
+                        alt={name || "User Image"} />
                 </>
             )}
 
@@ -65,6 +64,9 @@ export default async function Home() {
             <a href="/api/auth/signin">Login</a>
             <br />
             <a href="/api/auth/signout">Sign out</a>
-        </main>
+            <br />
+            <SocialMediaCard />
+            <ScheduleInput />
+        </main></>
     );
 }
