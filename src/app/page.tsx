@@ -2,7 +2,8 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import Image from "next/image";
 import { Session } from "next-auth";
-import SocialMediaCard from "./match-results";
+import SocialMediaCard from "./components/match-results";
+import ResponsiveAppBar from "./components/navbar";
 import ScheduleInput from "./components/schedule-input";
 
 interface user {
@@ -18,7 +19,7 @@ export default async function Home() {
     const IMAGE_SIZE = 200;
 
     return (
-        <main>
+        <><ResponsiveAppBar></ResponsiveAppBar><main>
             {session && (
                 <>
                     <p>
@@ -29,8 +30,7 @@ export default async function Home() {
                         src={image || ""}
                         width={IMAGE_SIZE}
                         height={IMAGE_SIZE}
-                        alt={name || "User Image"}
-                    />
+                        alt={name || "User Image"} />
                 </>
             )}
 
@@ -41,6 +41,6 @@ export default async function Home() {
             <br />
             <SocialMediaCard />
             <ScheduleInput />
-        </main>
+        </main></>
     );
 }
