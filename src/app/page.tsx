@@ -1,12 +1,41 @@
-import Image from 'next/image'
-import SocialMediaCard from './match-results'
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/app/api/auth/[...nextauth]/options";
+import Image from "next/image";
+import { Session } from "next-auth";
 
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <SocialMediaCard></SocialMediaCard>
-      </div>
-    </main>
-  )
+interface user {
+    name: string;
+    email: string;
+    image: string;
+}
+
+export default async function Home() {
+    const session = await getServerSession(authOptions);
+    const { name = "", email = "", image = "" } = session?.user || {name: "", email: "", image: ""};
+
+    const IMAGE_SIZE = 200;
+
+    return (
+        <main>
+            {session && (
+                <>
+                    <p>
+                        User logged in: {name} <br />
+                        Email: {email}
+                    </p>
+                    <Image
+                        src={image || ""}
+                        width={IMAGE_SIZE}
+                        height={IMAGE_SIZE}
+                        alt={name || "User Image"}
+                    />
+                </>
+            )}
+
+            <h1>BroncoHacks</h1>
+            <a href="/api/auth/signin">Login</a>
+            <br />
+            <a href="/api/auth/signout">Sign out</a>
+        </main>
+    );
 }
