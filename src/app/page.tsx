@@ -1,12 +1,10 @@
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import Image from "next/image";
-import { Session } from "next-auth";
-import {collection,addDoc,query,where,doc} from "firebase/firestore"
+import {collection,addDoc,query,where} from "firebase/firestore"
 
 import {db} from "@/database/firebase"
-import {user,Class,Time} from "@/database/schema"
-import { imageConfigDefault } from "next/dist/shared/lib/image-config";
+import {user} from "@/database/schema"
 
 import SocialMediaCard from "@/components/match-results";
 import ResponsiveAppBar from "@/components/navbar";

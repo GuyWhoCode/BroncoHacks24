@@ -19,7 +19,8 @@ export interface Class {
     professor: string,
 }
 
-export interface Time{
-    hour: number,
-    minute: number,
+}
+export interface Time {
+    hour: number;
+    minute: number;
 }
