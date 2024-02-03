@@ -4,14 +4,13 @@ import Image from "next/image";
 import { Session } from "next-auth";
 import {collection,addDoc,query,where,doc} from "firebase/firestore"
 
-import {db} from "@/app/database/firebase"
-import {user,Class,Time} from "@/app/database/schema"
+import {db} from "@/database/firebase"
+import {user,Class,Time} from "@/database/schema"
 import { imageConfigDefault } from "next/dist/shared/lib/image-config";
 
-import SocialMediaCard from "./components/match-results";
-import ResponsiveAppBar from "./components/navbar";
-import ScheduleInput from "./components/schedule-input";
-
+import SocialMediaCard from "@/components/match-results";
+import ResponsiveAppBar from "@/components/navbar";
+import ScheduleInput from "@/components/schedule-input";
 
 export default async function Home() {
     const session = await getServerSession(authOptions);
