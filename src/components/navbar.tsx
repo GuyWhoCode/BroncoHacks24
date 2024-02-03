@@ -8,7 +8,15 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 
-const ResponsiveAppBar = () => {
+import ProfileMenu from "./profile-button";
+
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/app/api/auth/[...nextauth]/options";
+
+const ResponsiveAppBar = async () => {
+    const session = await getServerSession(authOptions);
+    const { name = "", image = "" } = session?.user || {name: "", image: ""};
+
     return (
         <AppBar position="static" color="success">
             <Toolbar sx={{ justifyContent: "center" }}>
@@ -50,20 +58,7 @@ const ResponsiveAppBar = () => {
                     >
                         Find a Buddy
                     </Button>
-                    <Button
-                        color="inherit"
-                        sx={{
-                            padding: "12px",
-                            fontSize: "20px",
-                        }}
-                    >
-                        John Doe
-                        <Avatar
-                            sx={{ width: 45, height: 45, marginLeft: "15px" }}
-                        >
-                            J
-                        </Avatar>
-                    </Button>
+                    <ProfileMenu img={image || ""} />
                 </Box>
             </Toolbar>
         </AppBar>

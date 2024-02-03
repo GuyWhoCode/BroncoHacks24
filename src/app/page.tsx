@@ -9,6 +9,7 @@ import {user} from "@/database/schema"
 import SocialMediaCard from "@/components/match-results";
 import ResponsiveAppBar from "@/components/navbar";
 import ScheduleInput from "@/components/schedule-input";
+import SocialMediaInput from "@/components/social-media-input";
 
 export default async function Home() {
     const session = await getServerSession(authOptions);
@@ -41,31 +42,21 @@ export default async function Home() {
         return false
     }
     const IMAGE_SIZE = 200;
-    
 
     return (
         <><ResponsiveAppBar></ResponsiveAppBar><main>
-            {session && (
-                <>
-                    <p>
-                        User logged in: {name} <br />
-                        Email: {email}
-                    </p>
-                    <Image
-                        src={image || ""}
-                        width={IMAGE_SIZE}
-                        height={IMAGE_SIZE}
-                        alt={name || "User Image"} />
-                </>
-            )}
-
-            <h1>BroncoHacks</h1>
-            <a href="/api/auth/signin">Login</a>
-            <br />
-            <a href="/api/auth/signout">Sign out</a>
-            <br />
+            <h1>
+                {session && (
+                    <>
+                        <p style={{ textAlign: "center" }}>
+                            User logged in: {name} <br />
+                        </p>
+                    </>
+                )}
+            </h1>
             <SocialMediaCard />
             <ScheduleInput />
+            <SocialMediaInput />
         </main></>
     );
 }
