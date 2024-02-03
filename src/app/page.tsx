@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import Image from "next/image";
 import { Session } from "next-auth";
+import SocialMediaCard from "./match-results";
 
 interface user {
     name: string;
@@ -36,6 +37,8 @@ export default async function Home() {
             <a href="/api/auth/signin">Login</a>
             <br />
             <a href="/api/auth/signout">Sign out</a>
+            <br />
+            <SocialMediaCard />
         </main>
     );
 }
