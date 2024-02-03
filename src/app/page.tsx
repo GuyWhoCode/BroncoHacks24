@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import Image from "next/image";
+import { Session } from "next-auth";
 
 interface user {
     name: string;
@@ -9,12 +10,9 @@ interface user {
 }
 
 export default async function Home() {
-    const session = await getServerSession(authOptions);
-    const { name, email, image }: user = session?.user ?? {
-        name: "",
-        email: "",
-        image: "",
-    };
+    const session = (await getServerSession(authOptions)) as Session;
+    const { name, email, image } = session?.user as user;
+
     const IMAGE_SIZE = 200;
 
     return (
